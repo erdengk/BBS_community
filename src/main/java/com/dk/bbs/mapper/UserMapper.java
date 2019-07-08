@@ -11,6 +11,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
-    @Insert("insert into user (name,account_id,token,gmt,create) values (#{name},#{account_id},#{token},#{gmt},#{create})")
+
+   // public static User findByToken(String token) ;
+
+    @Insert("insert into user (name,account_id,token,gmt_create,gmt_modified) values (#{name},#{account_id},#{token},#{gmt_create},#{gmt_modified})")
     void insert(User user);
 }
