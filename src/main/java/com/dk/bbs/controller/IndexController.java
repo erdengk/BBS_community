@@ -34,11 +34,9 @@ public class IndexController {
                 {
                     request.getSession().setAttribute("user",user);
                 }
-                break;
+
             }
         }
-
-
         return "index";
     }
 }

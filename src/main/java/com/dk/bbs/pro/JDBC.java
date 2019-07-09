@@ -1,5 +1,6 @@
 package com.dk.bbs.pro;
 
+import com.dk.bbs.model.Qusetion;
 import com.dk.bbs.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -38,5 +39,21 @@ public class JDBC {
         return jdbcTemplate.queryForObject(sql,User.class);
     }
 
+    public void Create(Qusetion qusetion){
+        DriverManagerDataSource dataSource=new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/spring?useUnicode=yes&characterEncoding=utf8");
+        dataSource.setUsername("root");
+        dataSource.setPassword("root");
+        JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
+        String sql="insert into qusetion" +
+                "(title,description,tag,creator,gmt_create,gmt_modified) values(?,?,?,?,?,?)";
+        int count=jdbcTemplate.update(sql,
+                qusetion.getTitle(),qusetion.getDescription()
+        ,qusetion.getTag(),qusetion.getCreator(),qusetion.getGmt_create(),qusetion.getGmt_modified());
+        if(count==1) {
+            System.out.println("success");
+        }
+    }
 
 }
