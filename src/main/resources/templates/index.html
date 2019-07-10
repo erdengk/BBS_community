@@ -3,12 +3,12 @@
 <head>
     <title>BBS社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<!--    <link rel="stylesheet" href="css/bootstrap.min.css"/>-->
-<!--    <link rel="stylesheet" href="css/bootstrap-theme.min.css">-->
-<!--    <link rel="stylesheet" href="css/community.css">-->
-<!--    <script src="js/jquery-3.4.1.min.js"></script>-->
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
-<!--    <script src="js/bootstrap.min.js" type="application/javascript"></script>-->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/community.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
 </head>
 
 <body>
@@ -54,6 +54,9 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Link</a></li>
+                    <li th:if="${session.user!=null}">
+                        <a href="/publish">发布</a>
+                    </li>>
                     <li class="dropdown" th:if="${session.user!=null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName() }"> <span class="caret">+1111</span></a>
 <!--                        <ul class="dropdown-menu">-->
@@ -67,9 +70,26 @@
                     <li th:unless="not ${session.user==null}">
                         <a href="https://github.com/login/oauth/authorize?client_id=384853dbcd96a5f20202&redirect_uri=http://localhost:8888/callback&scope=user&state=1">login</a>
                     </li>
+                    <a href="publish.html"></a>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+<!--    <div class="media" th:each="question : ${pagination.data}">-->
+        <div class="media-left">
+<!--            <a href="#">-->
+<!--                <img class="media-object img-rounded"-->
+<!--                     th:src="${qusetion.user.avatar_url}">-->
+<!--            </a>-->
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+            </h4>
+<!--            <span th:text="${qusetion.description}"></span> <br>-->
+<!--            <span class="text-desc"><span th:text="${qusetion.commentCount}"></span> 个回复 • <span-->
+<!--                    th:text="${qusetion.viewCount}"></span> 次浏览 • <span-->
+<!--                    th:text="${#dates.format(qusetion.gmtCreate,'yyyy-MM-dd HH:mm')}"></span></span>-->
+
+    </div>
 </body>
 </html>
