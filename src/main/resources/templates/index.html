@@ -15,7 +15,7 @@
     <H1>
     <a href="https://github.com/login/oauth/authorize?client_id=384853dbcd96a5f20202&redirect_uri=http://localhost:8888/callback&scope=user&state=1">login</a>
     </H1>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="margin-left:135px">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -75,21 +75,29 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-<!--    <div class="media" th:each="question : ${pagination.data}">-->
+    <div class="container-fluid main">
+        <div class="row" style="margin-left:135px">
+    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+    <div class="media" th:each="qusetionList : ${qusetionList}">
+`````````
         <div class="media-left">
-<!--            <a href="#">-->
-<!--                <img class="media-object img-rounded"-->
-<!--                     th:src="${qusetion.user.avatar_url}">-->
-<!--            </a>-->
+            <a href="#" >
+                <img class="media-object img-rounded"
+                     th:src="${qusetionList.user}">
+            </a>
         </div>
         <div class="media-body">
             <h4 class="media-heading">
+                <a th:href="@{'/question/'+ ${qusetionList.id}}" th:text="${qusetionList.title}"></a>
             </h4>
-<!--            <span th:text="${qusetion.description}"></span> <br>-->
-<!--            <span class="text-desc"><span th:text="${qusetion.commentCount}"></span> 个回复 • <span-->
-<!--                    th:text="${qusetion.viewCount}"></span> 次浏览 • <span-->
-<!--                    th:text="${#dates.format(qusetion.gmtCreate,'yyyy-MM-dd HH:mm')}"></span></span>-->
-
+            <span th:text="${qusetionList.description}"></span> <br>
+            <span class="text-desc"><span th:text="${qusetionList.getComment_count()}"></span> 个回复 • <span
+                    th:text="${qusetionList.getLike_count()}"></span> 次浏览 • <span
+                    th:text="${#dates.format(qusetionList.getGmt_create(),'yyyy-MM-dd HH:mm')}"></span></span>
+        </div>
+    </div>
+</div>
+            </div>
     </div>
 </body>
 </html>

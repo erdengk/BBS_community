@@ -13,3 +13,4 @@ public class BbsApplication {
         SpringApplication.run(BbsApplication.class, args);
     }
 }
+
